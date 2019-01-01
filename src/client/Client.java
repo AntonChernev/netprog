@@ -55,7 +55,7 @@ public class Client {
     }
 
     private static void sendFile(String filename) throws IOException {
-        BufferedReader fileStream = new BufferedReader(new FileReader(filename));
+        BufferedReader fileStream = new BufferedReader(new InputStreamReader(new FileInputStream(filename), "UTF8"));
         String line;
 
         while((line = fileStream.readLine()) != null) {
