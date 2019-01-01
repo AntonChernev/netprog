@@ -19,7 +19,7 @@ public class Client {
         Socket socket = null;
         try {
             socket = new Socket(host, port);
-            input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            input = new BufferedReader(new InputStreamReader(socket.getInputStream(), "UTF8"));
             output = new PrintStream(socket.getOutputStream());
 
             output.println(minOccurrences);
@@ -70,3 +70,4 @@ public class Client {
         }
     }
 }
+

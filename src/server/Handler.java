@@ -25,7 +25,7 @@ public class Handler implements Runnable {
         System.out.println("New connection from " + socket.getInetAddress());
 
         this.socket = socket;
-        input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        input = new BufferedReader(new InputStreamReader(socket.getInputStream(), "UTF8"));
         output = new PrintStream(socket.getOutputStream());
 
         encoder = new Encoder();
@@ -91,3 +91,4 @@ public class Handler implements Runnable {
         }
     }
 }
+
