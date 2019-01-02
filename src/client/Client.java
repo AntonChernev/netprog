@@ -9,7 +9,7 @@ public class Client {
     private static int port;
     private static String logfile;
     private static BufferedReader input;
-    private static PrintStream output;
+    private static PrintWriter output;
 
     private static int minOccurrences;
 
@@ -20,7 +20,7 @@ public class Client {
         try {
             socket = new Socket(host, port);
             input = new BufferedReader(new InputStreamReader(socket.getInputStream(), "UTF8"));
-            output = new PrintStream(socket.getOutputStream());
+            output = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), "UTF8"));
 
             output.println(minOccurrences);
             sendFile(logfile);

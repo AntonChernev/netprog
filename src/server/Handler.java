@@ -2,7 +2,6 @@ package server;
 
 import java.net.*;
 import java.io.*;
-import java.io.PrintStream;
 import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
@@ -14,7 +13,7 @@ public class Handler implements Runnable {
 
     private Socket socket;
     private BufferedReader input;
-    private PrintStream output;
+    private PrintWriter output;
 
     private int minOccurrences;
 
@@ -26,7 +25,7 @@ public class Handler implements Runnable {
 
         this.socket = socket;
         input = new BufferedReader(new InputStreamReader(socket.getInputStream(), "UTF8"));
-        output = new PrintStream(socket.getOutputStream());
+        output = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), "UTF8"));
 
         encoder = new Encoder();
         eventLog = new EventLog(encoder);
